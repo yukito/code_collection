@@ -1,6 +1,7 @@
 import logging
 
-LOG_LEVEL = logging.debug
+LOG_LEVEL = logging.DEBUG
+LOG_FILE = "/tmp/sample.log"
 
 
 def log_init(namespace = ""):
