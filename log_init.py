@@ -24,3 +24,22 @@ def log_init(namespace = __name__):
     logger.debug(namespace + " has been initialized")
 
     return logger
+
+# Following is for those who use syslog
+
+import logging.handlers
+
+def log_init():
+
+   logger = logging.getLogger("load_checker")
+   logger.setLevel(LOG_LEVEL)
+
+   handler = logging.handlers.SysLogHandler(address = LOG_SERVER, facility="local7")
+   formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s %(message)s')
+   handler.setFormatter(formatter)
+   handler.setLevel(LOG_LEVEL)
+   logger.addHandler(handler)
+   logger.propagate = True
+
+   return logger
+
